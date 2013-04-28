@@ -159,6 +159,10 @@ Permutation.prototype.toCycleString = function() {
     result += '(' + this.cycles[i].join('') + ')';
   }
 
+  if (result == "") {
+    result = "()"; // a traditional notation for an identity permutation
+  }
+
   return result;
 }
 
