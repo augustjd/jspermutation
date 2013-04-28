@@ -53,7 +53,7 @@ Array.prototype.forEach = function(func) {
 
 function validatePermutationArray(arr) {
   if (arr.hasDuplicates()) {
-    if (console) {
+    if (console && console.error) {
       console.error("The array passed to initialize the permutation " +
           "contained duplicates, thus it does not correspond to a 1-1 function.");
     }
@@ -63,7 +63,7 @@ function validatePermutationArray(arr) {
     for (var i = 0; i < arr.length; ++i) {
       if (arr[i] > MAX_ALLOWED_PERMUTATION_INDEX ||
           arr[i] < PERMUTATION_INDEX) {
-        if (console) {
+        if (console && console.error) {
           console.error("The array passed to initialize the permutation " +
               "had the element " + arr[i] + " which was either too high or low.");
         }
@@ -231,7 +231,7 @@ Permutation.getChar = function(i) {
   } else if (i <= MAX_ALLOWED_PERMUTATION_INDEX) {
     return String.fromCharCode(CA + (i - 10));
   } else {
-    if (console) {
+    if (console && console.error) {
       console.error("getChar could not represent the integer " + i +
           " in a single character. The max allowable is " + 
           MAX_ALLOWED_PERMUTATION_INDEX + ".");
@@ -246,7 +246,7 @@ Permutation.parseChar = function(c) {
   } else if (i >= CA && i <= CZ) {
     return ((i + 10) - CA);
   } else {
-    if (console) {
+    if (console && console.error) {
       console.error("parseChar could not parse the character '" + c + "'.");
     }
   }
