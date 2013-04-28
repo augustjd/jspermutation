@@ -51,6 +51,30 @@ Array.prototype.forEach = function(func) {
 // Permutation Helpers
 //
 
+// only works if a and b are both >= 0.
+Math.gcd = function(a, b) {
+  while (b != 0) {
+    var c = a % b;
+    a = b;
+    b = c;
+  }
+  return a;
+}
+
+Array.prototype.gcd = function() {
+  if (this.length == 0) { return undefined; }
+  else if (this.length == 1) { return this[0]; }
+  else {
+    var final_gcd = Math.gcd(this[0], this[1]);
+    
+    for (var i = 2; i < this.length; ++i) {
+      final_gcd = Math.gcd(final_gcd, this[i]);
+    }
+
+    return final_gcd;
+  }
+}
+
 function validatePermutationArray(arr) {
   if (arr.hasDuplicates()) {
     if (console && console.error) {
@@ -124,6 +148,19 @@ Permutation = function(arr) {
     }
 
     return _cycles;
+  });
+
+  this.__defineGetter__("order", function() {
+    var lengths_arr = [0]; // if there are no cycles, there
+                           // are only 1-cycles, thus order 0 is appropriate.
+                           // Also, this won't muck with the computation since
+                           // gcd(0,a) = a;
+    var cyc = this.cycles;
+    for (var i = 0; i < cyc.length; ++i) {
+      lengths_arr.push(cyc[i].length);
+    }
+
+    return lengths_arr.gcd();
   });
 }
 
