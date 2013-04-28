@@ -1,6 +1,7 @@
 /* This class represents a permutation, and encapsulates
  * some useful behaviors for dealing with them, such as
  * cloning and toString.
+<<<<<<< HEAD
  *
  * Now, you can compose permutations with .compose(), and 
  * intialize them from cycle notation with Permutation.fromCycleString().
@@ -13,6 +14,20 @@
  *
  * I still need to find a nice way of making these permutations immutable, though,
  * since changing the value of any of their indicies would break the class.
+=======
+ * 
+ * Coming Soon:
+ *  - Cycle notation compatibility, both through a
+ *  Permutation.fromCycleString function and a .toCycleString
+ *  function. These will be compatible with nondisjoint permutations.
+ *  - Permutation composition, resulting in a new permutation,
+ *  to be implemented with a .compose function.
+ *  - A .cycles property which consists in an array of cycles
+ *  of this permutation, indexed by element. Thus .cycles[0] gives
+ *  the cycle containing 0.
+ *
+ *
+>>>>>>> dca916ced3ac1d27015bae9d5d5ae140d125793c
  */
 
 
@@ -35,10 +50,14 @@ Array.prototype.hasDuplicates = function() {
   }
   return false;
 }
+<<<<<<< HEAD
 //
 // An easy foreach construct with Arrays. Functions
 // passed to be executed are passed two arguments,
 // func(value, index), for each element in the array.
+=======
+
+>>>>>>> dca916ced3ac1d27015bae9d5d5ae140d125793c
 Array.prototype.forEach = function(func) {
   for (var i = 0; i < this.length; ++i) {
     func(this[i], i);
@@ -93,6 +112,7 @@ Permutation = function(arr) {
   for (var i = 0; i < arr.length; ++i) {
     this[PERMUTATION_INDEX + i] = arr[i];
   }
+<<<<<<< HEAD
 
   var _cycles = undefined;
   var getCycles = function(perm) {
@@ -125,6 +145,8 @@ Permutation = function(arr) {
 
     return _cycles;
   });
+=======
+>>>>>>> dca916ced3ac1d27015bae9d5d5ae140d125793c
 }
 
 Permutation.fromFunction = function(func, n) {
@@ -145,12 +167,17 @@ Permutation.prototype.toString = function() {
   var total = [];
 
   for (var i = PERMUTATION_INDEX; i < this.length + PERMUTATION_INDEX; ++i) {
+<<<<<<< HEAD
     total.push(Permutation.getChar(this[i]));
+=======
+    total.push(this.getChar(this[i]));
+>>>>>>> dca916ced3ac1d27015bae9d5d5ae140d125793c
   }
 
   return total.join('');
 }
 
+<<<<<<< HEAD
 Permutation.prototype.toCycleString = function() {
   var result = "";
 
@@ -161,6 +188,8 @@ Permutation.prototype.toCycleString = function() {
   return result;
 }
 
+=======
+>>>>>>> dca916ced3ac1d27015bae9d5d5ae140d125793c
 Permutation.prototype.clone = function() {
   var clone_arr = [];
 
@@ -175,6 +204,7 @@ Permutation.prototype.at = function(i) {
   return this[i+PERMUTATION_INDEX];
 }
 
+<<<<<<< HEAD
 // Returns a new Permutation consisting of theta
 // composed with this, i.e. this(theta)
 Permutation.prototype.compose = function(theta) {
@@ -191,6 +221,8 @@ Permutation.prototype.compose = function(theta) {
   return new Permutation(arr);
 }
 
+=======
+>>>>>>> dca916ced3ac1d27015bae9d5d5ae140d125793c
 Permutation.equals = function(left, right) {
   for (var i = 0; i < this.length; ++i) {
     if (left.at(i) != right.at(i)) {
@@ -224,7 +256,11 @@ var MAX_ALLOWED_PERMUTATION_INDEX = 35;
 // to the following pattern:
 //    If i = 0..9, then return '0'..'9' 
 //    If i = 10..35 then return 'A'..'Z'
+<<<<<<< HEAD
 Permutation.getChar = function(i) {
+=======
+Permutation.prototype.getChar = function(i) {
+>>>>>>> dca916ced3ac1d27015bae9d5d5ae140d125793c
   if (i >= 0 && i <= 9) {
     return String.fromCharCode(C0 + i);
   } else if (i <= MAX_ALLOWED_PERMUTATION_INDEX) {
@@ -278,6 +314,7 @@ Permutation.fromString = function(s) {
     return new Permutation(arr);
   }
 }
+<<<<<<< HEAD
 
 Permutation.fromCycleString = function(s, n) {
   function splitCycles(s) {
@@ -335,3 +372,5 @@ Permutation.fromCycleString = function(s, n) {
   
   return new Permutation(arr);
 }
+=======
+>>>>>>> dca916ced3ac1d27015bae9d5d5ae140d125793c
