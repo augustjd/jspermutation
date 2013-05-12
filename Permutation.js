@@ -228,8 +228,8 @@ Permutation.prototype.compose = function(theta) {
 
   var arr = [];
 
-  for (var i = PERMUTATION_INDEX; i < this.length + PERMUTATION_INDEX; ++i) {
-    arr[i] = this[theta[i]];
+  for (var i = 0; i < this.length; ++i) {
+    arr[i] = this[theta[i+PERMUTATION_INDEX]];
   }
 
   return new Permutation(arr);
