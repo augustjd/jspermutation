@@ -124,7 +124,7 @@ Permutation = function(arr) {
 
     var cycles = [];
 
-    for (var i = 0; i < perm.length; ++i) {
+    for (var i = PERMUTATION_INDEX; i < perm.length + PERMUTATION_INDEX; ++i) {
       if (perm[i] != i && already_used[i] == undefined) {
         var curr_cycle = [i];
         already_used[i] = true;
