@@ -220,12 +220,15 @@ Permutation.prototype.at = function(i) {
 // composed with this, i.e. this(theta)
 Permutation.prototype.compose = function(theta) {
   if (theta.length != this.length) {
+      if (console && console.error) {
+          console.error("Tried to compose two permutations of unequal length.");
+      }
     return undefined;
   }
 
   var arr = [];
 
-  for (var i = 0; i < this.length; ++i) {
+  for (var i = PERMUTATION_INDEX; i < this.length + PERMUTATION_INDEX; ++i) {
     arr[i] = this[theta[i]];
   }
 
