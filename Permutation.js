@@ -183,7 +183,6 @@ Permutation.prototype.toString = function() {
 
   for (var i = PERMUTATION_INDEX; i < this.length + PERMUTATION_INDEX; ++i) {
     total.push(Permutation.getChar(this[i]));
-    total.push(this.getChar(this[i]));
   }
 
   return total.join('');
