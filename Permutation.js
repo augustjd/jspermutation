@@ -372,7 +372,7 @@ Permutation.fromCycleString = function(s, n) {
   }
 
   var arr = [];
-  for (var i = 0; i < n; ++i) {
+  for (var i = PERMUTATION_INDEX; i < n + PERMUTATION_INDEX; ++i) {
     arr.push(Permutation.parseChar(followCycles(splits, Permutation.getChar(i))));
   }
   
